@@ -85,7 +85,7 @@ public class IntList {
             return B;
         }
         IntList ptr = A;
-        while (ptr != null) {
+        while (ptr.rest != null) {
             ptr = ptr.rest;
         }
         ptr.rest = B;
