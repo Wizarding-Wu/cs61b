@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 /** Performs some basic ArrayDeque tests. */
 public class ArrayDequeTest {
 
@@ -35,7 +37,6 @@ public class ArrayDequeTest {
      * && is the "and" operation. */
     public static void addIsEmptySizeTest() {
         System.out.println("Running add/isEmpty/Size test.");
-//		System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
 //		/*
         ArrayDeque<String> lld1 = new ArrayDeque<String>();
 
@@ -57,8 +58,8 @@ public class ArrayDequeTest {
         System.out.println("Printing out deque: ");
         lld1.printDeque();
 
-        passed = (lld1.get(0) == "front") && passed;
-        passed = (lld1.get(2) == "back") && passed;
+        passed = (Objects.equals(lld1.get(0), "front")) && passed;
+        passed = (Objects.equals(lld1.get(2), "back")) && passed;
 
 
         printTestStatus(passed);
@@ -70,7 +71,6 @@ public class ArrayDequeTest {
 
         System.out.println("Running add/remove test.");
 
-        // System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
         // /*
         ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
         // should be empty
@@ -88,9 +88,24 @@ public class ArrayDequeTest {
         // */
     }
 
+    public static void myTest() {
+        System.out.println("Running my test.");
+        ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
+        lld1.addFirst(0);
+        lld1.addFirst(1);
+        lld1.addFirst(2);
+        lld1.addFirst(3);
+        boolean passed = (3 == lld1.removeFirst());
+        passed = (2 == lld1.removeFirst()) && passed;
+
+        printTestStatus(passed);
+
+    }
+
     public static void main(String[] args) {
         System.out.println("Running tests.\n");
         addIsEmptySizeTest();
         addRemoveTest();
+        myTest();
     }
 }
