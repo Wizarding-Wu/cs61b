@@ -12,7 +12,8 @@ public class LinkedListDeque<T> {
         }
     }
 
-    private DeNode sentinel; // The next of sentinel will be the first item, the front of sentinel will be the last item.
+    // The next of sentinel will be the first item, the front of sentinel will be the last item.
+    private DeNode sentinel;
     private int size;
     private T SENTINEL_ITEM;
 
@@ -32,7 +33,7 @@ public class LinkedListDeque<T> {
 
     public void printDeque() {
         DeNode p = sentinel.next;
-        while(p != sentinel) {
+        while (p != sentinel) {
             System.out.print(p.item + " ");
             p = p.next;
         }
@@ -56,8 +57,8 @@ public class LinkedListDeque<T> {
         } else {
             sentinel.front.next = new DeNode(item, sentinel.front, sentinel);
             sentinel.front = sentinel.front.next;
+            size++;
         }
-        size++;
     }
 
     public T removeFirst() {
