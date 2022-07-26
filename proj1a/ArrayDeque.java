@@ -1,5 +1,6 @@
 public class ArrayDeque<T> {
     private static int INITIAL_SIZE = 8;
+    private static int FACTOR = 4;
     private T[] items;
     private int size;
     private int nextFirst;
@@ -46,7 +47,7 @@ public class ArrayDeque<T> {
     }
 
     private void resize() {
-        int FACTOR = 4;
+
         T[] newItems = (T[]) new Object[size * FACTOR];
         int start = plusOne(nextFirst);
         System.arraycopy(items, start, newItems, 0, size - start);
@@ -104,8 +105,4 @@ public class ArrayDeque<T> {
         }
         return items[(nextFirst + index + 1) % items.length];
     }
-
-
-
-
 }

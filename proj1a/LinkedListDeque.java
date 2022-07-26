@@ -1,9 +1,9 @@
 /** A double-ended queue using linked list data structure. */
 public class LinkedListDeque<T> {
     private class DeNode {
-        public DeNode front;
-        public DeNode next;
-        public T item;
+        private DeNode front;
+        private DeNode next;
+        private T item;
 
         public DeNode(T i, DeNode f, DeNode n) {
             item = i;
@@ -46,7 +46,10 @@ public class LinkedListDeque<T> {
             sentinel.next = newNode; // The first node and last node are both the new node.j
             sentinel.front = newNode;
         } else {
-            sentinel.next = new DeNode(item, sentinel, sentinel.next);
+            DeNode newNode = new DeNode(item, sentinel, sentinel.next);
+            sentinel.next.front = newNode;
+            sentinel.next = newNode;
+
         }
         size++;
     }
