@@ -70,4 +70,29 @@ public class IntListTest {
       * to add a main method. See ArithmeticTest.java for an
       * example. */
 
+    /**
+     * Returns the reverse of the given IntList.
+     * This method is destructive. If given null
+     * as an input, returns null.
+     */
+    @Test
+    public void testReverse() {
+        // Regular test
+        IntList A = IntList.of(1, 2, 3, 4, 5);
+        IntList expectedA = IntList.of(5, 4, 3, 2, 1);
+        IntList actual = IntList.reverse(A);
+        assertEquals(expectedA, actual);
+
+        // Make sure the method is destructive
+        IntList originalA = IntList.of(1, 2, 3, 4, 5);
+        assertNotEquals(originalA, A);
+
+        // Make sure the method handles a null input properly
+        assertNull(IntList.reverse(null));
+
+
+
+
+    }
+
 }
