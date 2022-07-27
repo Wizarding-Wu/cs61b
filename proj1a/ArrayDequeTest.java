@@ -105,9 +105,13 @@ public class ArrayDequeTest {
             lld1.removeFirst();
         }
 
-        lld1.addLast(0);
-        lld1.addLast(1);
+        for (int i = 0; i < 50; i++) {
+            lld1.addFirst(1);
+        }
 
+        for (int i = 0; i < 50; i++) {
+            lld1.removeFirst();
+        }
 
 
     }

@@ -53,8 +53,10 @@ public class ArrayDeque<T> {
         T[] newItems = (T[]) new Object[length];
         int start = plusOne(nextFirst);
         int end = minusOne(nextLast);
-        System.arraycopy(items, start, newItems, 0, items.length - start);
-        if (end <= start) {
+        if (start < end) {
+            System.arraycopy(items, start, newItems, 0, size);
+        } else {
+            System.arraycopy(items, start, newItems, 0, items.length - start);
             System.arraycopy(items, 0, newItems, items.length - start, end + 1);
         }
         items = newItems;
