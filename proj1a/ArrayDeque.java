@@ -52,9 +52,9 @@ public class ArrayDeque<T> {
 
         T[] newItems = (T[]) new Object[length];
         int start = plusOne(nextFirst);
-        System.arraycopy(items, start, newItems, 0, size - start);
+        System.arraycopy(items, start, newItems, 0, items.length - start);
         if (start != 0) {
-            System.arraycopy(items, 0, newItems, size - start, start);
+            System.arraycopy(items, 0, newItems, items.length - start, nextLast);
         }
         items = newItems;
         nextFirst = items.length - 1;
@@ -89,7 +89,7 @@ public class ArrayDeque<T> {
         size--;
         nextFirst = plusOne(nextFirst);
 
-        if (items.length > 16 && size * 1.0 / items.length < MINIMUM_USAGE) {
+        if ((items.length > 16) && ((size * 1.0 / items.length) < MINIMUM_USAGE)) {
             resize(size * REDUCTION_FACTOR);
         }
         return item;
@@ -105,7 +105,8 @@ public class ArrayDeque<T> {
         size--;
         nextLast = minusOne(nextLast);
 
-        if (items.length > 16 && size * 1.0 / items.length < MINIMUM_USAGE) {
+        double currentUsage = (size * 1.0) / items.length;
+        if ((items.length > 16) && (currentUsage < MINIMUM_USAGE)) {
             resize(size * REDUCTION_FACTOR);
         }
         return item;
