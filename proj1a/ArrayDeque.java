@@ -1,6 +1,8 @@
 public class ArrayDeque<T> {
     private static int INITIAL_SIZE = 8;
     private static int FACTOR = 4;
+    private static int REDUCTION_FACTOR = 2;
+    private static double MINIMUM_USAGE = 0.25;
     private T[] items;
     private int size;
     private int nextFirst;
@@ -46,9 +48,9 @@ public class ArrayDeque<T> {
         }
     }
 
-    private void resize() {
+    private void resize(int length) {
 
-        T[] newItems = (T[]) new Object[size * FACTOR];
+        T[] newItems = (T[]) new Object[length];
         int start = plusOne(nextFirst);
         System.arraycopy(items, start, newItems, 0, size - start);
         if (start != 0) {
@@ -61,7 +63,7 @@ public class ArrayDeque<T> {
 
     public void addFirst(T item) {
         if (size == items.length) {
-            resize();
+            resize(size * FACTOR);
         }
         items[nextFirst] = item;
         nextFirst = minusOne(nextFirst);
@@ -70,7 +72,7 @@ public class ArrayDeque<T> {
 
     public void addLast(T item) {
         if (size == items.length) {
-            resize();
+            resize(size * FACTOR);
         }
         items[nextLast] = item;
         nextLast = plusOne(nextLast);
@@ -86,6 +88,10 @@ public class ArrayDeque<T> {
         items[index] = null;
         size--;
         nextFirst = plusOne(nextFirst);
+
+        if (items.length > 16 && size * 1.0 / items.length < MINIMUM_USAGE) {
+            resize(size * REDUCTION_FACTOR);
+        }
         return item;
     }
 
@@ -98,6 +104,10 @@ public class ArrayDeque<T> {
         items[index] = null;
         size--;
         nextLast = minusOne(nextLast);
+
+        if (items.length > 16 && size * 1.0 / items.length < MINIMUM_USAGE) {
+            resize(size * REDUCTION_FACTOR);
+        }
         return item;
     }
 

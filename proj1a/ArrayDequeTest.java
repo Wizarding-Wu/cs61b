@@ -37,7 +37,6 @@ public class ArrayDequeTest {
      * && is the "and" operation. */
     public static void addIsEmptySizeTest() {
         System.out.println("Running add/isEmpty/Size test.");
-//		/*
         ArrayDeque<String> lld1 = new ArrayDeque<String>();
 
         boolean passed = checkEmpty(true, lld1.isEmpty());
@@ -63,7 +62,6 @@ public class ArrayDequeTest {
 
 
         printTestStatus(passed);
-//		*/
     }
 
     /** Adds an item, then removes an item, and ensures that dll is empty afterwards. */
@@ -71,7 +69,6 @@ public class ArrayDequeTest {
 
         System.out.println("Running add/remove test.");
 
-        // /*
         ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
         // should be empty
         boolean passed = checkEmpty(true, lld1.isEmpty());
@@ -85,7 +82,6 @@ public class ArrayDequeTest {
         passed = checkEmpty(true, lld1.isEmpty()) && passed;
 
         printTestStatus(passed);
-        // */
     }
 
     public static void myTest() {
