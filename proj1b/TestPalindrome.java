@@ -27,16 +27,7 @@ public class TestPalindrome {
         assertTrue(palindrome.isPalindrome(""));
     }
 
-    @Test
-    public void testOffByOne() {
-        OffByOne obo = new OffByOne();
-        assertTrue(obo.equalChars('a', 'b'));
-        assertTrue(obo.equalChars('r', 'q'));
 
-        assertFalse(obo.equalChars('a', 'e'));
-        assertFalse(obo.equalChars('z', 'a'));
-        assertFalse(obo.equalChars('a', 'a'));
-    }
 
     @Test
     public void testIsPalindromeObo() {
